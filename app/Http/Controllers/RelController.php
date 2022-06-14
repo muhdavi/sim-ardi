@@ -17,6 +17,9 @@ class RelController extends Controller
         if (request()->ajax()) {
             $rels = Rel::all();
             return DataTables::of($rels)
+                ->addColumn('action', function ($rels) {
+                    return '<a href="#edit-'.$rels->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                })
                 ->make();
         }
 
