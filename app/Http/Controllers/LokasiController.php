@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rel;
-use App\Models\User;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
-class RelController extends Controller
+class LokasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,24 @@ class RelController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $rels = Rel::all();
-            return DataTables::of($rels)
-                ->addColumn('action', function ($rels) {
-                    return '<a href="#edit-'.$rels->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+            $lokasis = Lokasi::all();
+            return DataTables::of($lokasis)
+                ->addColumn('rel', function (Lokasi $lokasi) {
+                    return $lokasi->rak->lemari->rel->rel;
+                })
+                ->addColumn('lemari', function (Lokasi $lokasi) {
+                    return $lokasi->rak->lemari->lemari;
+                })
+                ->addColumn('rak', function (Lokasi $lokasi) {
+                    return $lokasi->rak->rak;
+                })
+                ->addColumn('action', function ($lokasis) {
+                    return '<a href="#edit-'.$lokasis->id.'" class="btn btn-sm btn-primary"> Edit</a>';
                 })
                 ->make();
         }
 
-        return view('rel.index');
+        return view('lokasi.index');
     }
 
     /**
@@ -50,10 +58,10 @@ class RelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Rel  $rel
+     * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function show(Rel $rel)
+    public function show(Lokasi $lokasi)
     {
         //
     }
@@ -61,10 +69,10 @@ class RelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Rel  $rel
+     * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rel $rel)
+    public function edit(Lokasi $lokasi)
     {
         //
     }
@@ -73,10 +81,10 @@ class RelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rel  $rel
+     * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rel $rel)
+    public function update(Request $request, Lokasi $lokasi)
     {
         //
     }
@@ -84,10 +92,10 @@ class RelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Rel  $rel
+     * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rel $rel)
+    public function destroy(Lokasi $lokasi)
     {
         //
     }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Lemari') }}
         </h2>
     </x-slot>
 
@@ -9,17 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="#" class="btn btn-sm btn-success mb-2">Tambah Data</a>
-                    <table id="tbl_list_rak" class="table table-striped table-bordered">
+                    <a href="#" class="btn btn-sm btn-primary float-right mb-2">Tambah Data</a>
+                    <table class="table table-striped table-bordered tbl_list">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Rel</th>
+                                <th>Lemari</th>
+                                <th>Keterangan</th>
+                                <th>-</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -28,14 +29,16 @@
     @push('scripts')
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#tbl_list_rak').DataTable({
+                $('.tbl_list').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: '{{ url()->current() }}',
                     columns: [
                         { data: 'id', name: 'id' },
-                        { data: 'lemari', name: 'nama_lengkap' },
-                        { data: 'keterangan', name: 'email' },
+                        { data: 'rel', name: 'rel.rel' },
+                        { data: 'lemari', name: 'lemari' },
+                        { data: 'keterangan', name: 'keterangan' },
+                        { data: 'action', name: 'action', orderable: false, searchable: false},
                     ]
                 });
             });

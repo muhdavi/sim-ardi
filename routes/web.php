@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArdiController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\LemariController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PerangkatDaerahController;
 use App\Http\Controllers\RakController;
@@ -35,12 +37,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('rels', [RelController::class, 'index'])->name('index');
     });
 
+    Route::name('raks.')->group(function () {
+        Route::get('raks', [RakController::class, 'index'])->name('index');
+    });
+
     Route::name('lemaris.')->group(function () {
         Route::get('lemaris', [LemariController::class, 'index'])->name('index');
     });
 
-    Route::name('raks.')->group(function () {
-        Route::get('raks', [RakController::class, 'index'])->name('index');
+    Route::name('lokasis.')->group(function () {
+        Route::get('lokasis', [LokasiController::class, 'index'])->name('index');
     });
 
     Route::name('dokumens.')->group(function () {
@@ -56,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::name('ardis.')->group(function () {
-        Route::get('ardis', [RakController::class, 'index'])->name('index');
+        Route::get('ardis', [ArdiController::class, 'index'])->name('index');
     });
 
     Route::name('users.')->group(function () {

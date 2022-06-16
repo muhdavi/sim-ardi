@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Rel') }}
+            {{ __('Lokasi') }}
         </h2>
     </x-slot>
 
@@ -15,11 +15,17 @@
                         <tr>
                             <th>No</th>
                             <th>Rel</th>
+                            <th>Lemari</th>
+                            <th>Rak</th>
+                            <th>Nomor Urut</th>
+                            <th>Lokasi</th>
+                            <th>Status</th>
                             <th>Keterangan</th>
                             <th>-</th>
                         </tr>
                         </thead>
                         <tbody>
+
                         </tbody>
                     </table>
                 </div>
@@ -35,9 +41,25 @@
                     ajax: '{{ url()->current() }}',
                     columns: [
                         { data: 'id', name: 'id' },
-                        { data: 'rel', name: 'rel' },
+                        { data: 'rel', name: 'id' },
+                        { data: 'lemari', name: 'id' },
+                        { data: 'rak', name: 'id' },
+                        { data: 'nomor_urut', name: 'nomor_urut' },
+                        { data: 'lokasi', name: 'lokasi' },
+                        {
+                            data: 'pegawai_id',
+                            "render": function (data, type, row) {
+                                if (row.pegawai_id == null) {
+                                    return '<span class="badge badge-pill badge-secondary">Kosong</span>';
+                                } else {
+                                    return '<span class="badge badge-pill badge-success">Isi</span>';
+                                }
+                            },
+                            orderable: false,
+                            searchable: false,
+                        },
                         { data: 'keterangan', name: 'keterangan' },
-                        { data: 'action', name: 'action', orderable: false, searchable: false},
+                        { data: 'action', name: 'action', orderable: false, searchable: false },
                     ]
                 });
             });

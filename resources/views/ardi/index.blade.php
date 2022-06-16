@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Rel') }}
+            {{ __('Arsip Digital') }}
         </h2>
     </x-slot>
 
@@ -14,9 +14,8 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Rel</th>
-                            <th>Keterangan</th>
-                            <th>-</th>
+                            <th>Perangkat Daerah</th>
+                            <th>Perangkat Daerah</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,21 +25,4 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('.tbl_list').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: '{{ url()->current() }}',
-                    columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'rel', name: 'rel' },
-                        { data: 'keterangan', name: 'keterangan' },
-                        { data: 'action', name: 'action', orderable: false, searchable: false},
-                    ]
-                });
-            });
-        </script>
-    @endpush
 </x-app-layout>

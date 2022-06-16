@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lemari extends Model
+class Lokasi extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
-    public function rel()
+    public function rak()
     {
-        return $this->belongsTo(Rel::class);
+        return $this->belongsTo(Rak::class);
     }
 }

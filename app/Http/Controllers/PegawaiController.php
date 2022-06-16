@@ -11,8 +11,14 @@ class PegawaiController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $rels = Pegawai::all();
-            return DataTables::of($rels)
+            $pegawais = Pegawai::all();
+            return DataTables::of($pegawais)
+                ->addColumn('perangkat_daerah', function (Pegawai $pegawai) {
+                    return $pegawai->perangkat_daerah->perangkat_daerah;
+                })
+                ->addColumn('action', function ($pegawais) {
+                    return '<a href="#edit-'.$pegawais->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                })
                 ->make();
         }
 

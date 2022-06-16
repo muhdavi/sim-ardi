@@ -3,21 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rak;
+use App\Models\Rel;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class RakController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         if (request()->ajax()) {
             $raks = Rak::all();
-            return DataTables::of($raks)->make();
+            return DataTables::of($raks)
+                ->addColumn('rel', function (Rak $rak) {
+                    return $rak->lemari->rel->rel;
+                })
+                ->addColumn('lemari', function (Rak $rak) {
+                    return $rak->lemari->lemari;
+                })
+                ->addColumn('action', function ($lemaris) {
+                    return '<a href="#edit-'.$lemaris->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                })
+                ->make();
         }
 
         return view('rak.index');

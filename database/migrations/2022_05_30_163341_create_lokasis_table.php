@@ -22,8 +22,8 @@ class CreateLokasisTable extends Migration
                 ->nullable()
                 ->constrained('pegawais')
                 ->onUpdate('cascade');
-            $table->char('lokasi', 6);
-            $table->unsignedInteger('nomor_urut');
+            $table->char('lokasi', 6)->unique();
+            $table->char('nomor_urut', 2);
             $table->string('keterangan', 100)->nullable();
             $table->timestamps();
         });

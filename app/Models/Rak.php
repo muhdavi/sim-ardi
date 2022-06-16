@@ -9,4 +9,9 @@ class Rak extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function lemari()
+    {
+        return $this->belongsTo(Lemari::class);
+    }
 }

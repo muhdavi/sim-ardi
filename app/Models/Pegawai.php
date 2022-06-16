@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pegawai extends Model
 {
     use HasFactory;
+
+    public function perangkat_daerah()
+    {
+        return $this->belongsTo(PerangkatDaerah::class);
+    }
 }

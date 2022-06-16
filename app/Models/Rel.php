@@ -9,4 +9,9 @@ class Rel extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function lemaris()
+    {
+        return $this->hasMany(Lemari::class);
+    }
 }

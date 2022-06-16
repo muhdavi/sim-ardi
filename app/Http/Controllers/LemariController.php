@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lemari;
+use App\Models\Rel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -16,7 +17,14 @@ class LemariController extends Controller
     {
         if (request()->ajax()) {
             $lemaris = Lemari::all();
-            return DataTables::of($lemaris)->make();
+            return DataTables::of($lemaris)
+                ->addColumn('rel', function (Lemari $lemari) {
+                    return $lemari->rel->rel;
+                })
+                ->addColumn('action', function ($lemaris) {
+                    return '<a href="#edit-'.$lemaris->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                })
+                ->make();
         }
 
         return view('lemari.index');

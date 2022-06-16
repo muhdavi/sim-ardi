@@ -10,14 +10,15 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         if (request()->ajax()) {
-            $rels = User::all();
-            return DataTables::of($rels)
+            $users = User::all();
+            return DataTables::of($users)
+                ->addColumn('action', function ($users) {
+                    return '<a href="#edit-'.$users->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                })
                 ->make();
         }
 

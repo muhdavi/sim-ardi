@@ -10,8 +10,11 @@ class DokumenController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $rels = Dokumen::all();
-            return DataTables::of($rels)
+            $dokumens = Dokumen::all();
+            return DataTables::of($dokumens)
+                ->addColumn('action', function ($dokumens) {
+                    return '<a href="#edit-'.$dokumens->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                })
                 ->make();
         }
 

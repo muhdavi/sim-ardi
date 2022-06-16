@@ -32,7 +32,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dokumens.index')" :active="request()->routeIs('dokumens.index')">
+                    <x-nav-link :href="route('lokasis.index')" :active="request()->routeIs('lokasis.index')">
                         {{ __('Lokasi') }}
                     </x-nav-link>
                 </div>
@@ -52,13 +52,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ardis.index')" :active="request()->routeIs('ardis.index')">
-                        {{ __('ARDI') }}
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('User') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('User') }}
+                    <x-nav-link :href="route('ardis.index')" :active="request()->routeIs('ardis.index')">
+                        {{ __('ARDI') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Lemari;
+use App\Models\Lokasi;
 use App\Models\Rak;
 use App\Models\Rel;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class RelLemariRakSeeder extends Seeder
     {
         $rel = new Rel;
         $rel->rel = 'A';
+        $rel->keterangan = 'Rel untuk Pegawai Pensiun';
         $rel->save();
 
         $lemari = new Lemari;
@@ -28,6 +30,56 @@ class RelLemariRakSeeder extends Seeder
         $rak->rak = 'A-11';
         $rak->lemari_id = $lemari->id;
         $rak->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1101';
+        $lokasi->nomor_urut = '01';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1102';
+        $lokasi->nomor_urut = '02';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1103';
+        $lokasi->nomor_urut = '03';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1104';
+        $lokasi->nomor_urut = '04';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1105';
+        $lokasi->nomor_urut = '05';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1106';
+        $lokasi->nomor_urut = '06';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1107';
+        $lokasi->nomor_urut = '07';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1108';
+        $lokasi->nomor_urut = '08';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1109';
+        $lokasi->nomor_urut = '09';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
+        $lokasi = new Lokasi;
+        $lokasi->lokasi = 'A-1110';
+        $lokasi->nomor_urut = '10';
+        $lokasi->rak_id = $rak->id;
+        $lokasi->save();
         $rak = new Rak;
         $rak->rak = 'A-12';
         $rak->lemari_id = $lemari->id;
@@ -220,5 +272,39 @@ class RelLemariRakSeeder extends Seeder
         $rak->lemari_id = $lemari->id;
         $rak->save();
 
+        $rel = new Rel;
+        $rel->rel = 'B';
+        $rel->keterangan = 'Rel untuk Pegawai Tahun 1960';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->rel = 'C';
+        $rel->keterangan = 'Rel untuk Pegawai Tahun 1970';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->rel = 'D';
+        $rel->keterangan = 'Rel untuk Pegawai Tahun 1980';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->rel = 'E';
+        $rel->keterangan = 'Rel untuk Pegawai Tahun 1990';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->rel = 'F';
+        $rel->keterangan = 'Rel untuk Pegawai Tahun 2000';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->keterangan = 'Rel untuk Pegawai PPPK';
+        $rel->rel = 'G';
+        $rel->save();
+
+        $rel = new Rel;
+        $rel->rel = 'H';
+        $rel->keterangan = 'Rel untuk Pegawai CPNS';
+        $rel->save();
     }
 }
