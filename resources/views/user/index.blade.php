@@ -41,7 +41,7 @@
                         {
                             data: 'is_admin',
                             "render": function (data, type, row) {
-                                if (row.is_admin === 1) {
+                                if (row.is_admin == 1) {
                                     return '<span class="badge badge-pill badge-success">Admin</span>';
                                 } else {
                                     return '<span class="badge badge-pill badge-info">Operator</span>';

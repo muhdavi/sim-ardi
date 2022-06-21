@@ -33,17 +33,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    Route::name('rels.')->group(function () {
-        Route::get('rels', [RelController::class, 'index'])->name('index');
-    });
-
-    Route::name('raks.')->group(function () {
-        Route::get('raks', [RakController::class, 'index'])->name('index');
-    });
-
-    Route::name('lemaris.')->group(function () {
-        Route::get('lemaris', [LemariController::class, 'index'])->name('index');
-    });
+    Route::resource('rels', RelController::class);
+    Route::resource('raks', RakController::class);
+    Route::resource('lemaris', LemariController::class);
 
     Route::name('lokasis.')->group(function () {
         Route::get('lokasis', [LokasiController::class, 'index'])->name('index');

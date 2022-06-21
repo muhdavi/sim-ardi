@@ -9,6 +9,7 @@ class Rel extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = ['id', 'rel', 'keterangan'];
 
     public function lemaris()
     {

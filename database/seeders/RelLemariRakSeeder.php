@@ -26,10 +26,12 @@ class RelLemariRakSeeder extends Seeder
         $lemari->lemari = 'A-1';
         $lemari->rel_id = $rel->id;
         $lemari->save();
+
         $rak = new Rak;
         $rak->rak = 'A-11';
         $rak->lemari_id = $lemari->id;
         $rak->save();
+
         $lokasi = new Lokasi;
         $lokasi->lokasi = 'A-1101';
         $lokasi->nomor_urut = '01';
@@ -80,6 +82,7 @@ class RelLemariRakSeeder extends Seeder
         $lokasi->nomor_urut = '10';
         $lokasi->rak_id = $rak->id;
         $lokasi->save();
+
         $rak = new Rak;
         $rak->rak = 'A-12';
         $rak->lemari_id = $lemari->id;
@@ -276,6 +279,61 @@ class RelLemariRakSeeder extends Seeder
         $rel->rel = 'B';
         $rel->keterangan = 'Rel untuk Pegawai Tahun 1960';
         $rel->save();
+
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-1';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $rak = new Rak;
+        $rak->rak = 'B-11';
+        $rak->lemari_id = $lemari->id;
+        $rak->save();
+        $rak = new Rak;
+        $rak->rak = 'B-12';
+        $rak->lemari_id = $lemari->id;
+        $rak->save();
+        $rak = new Rak;
+        $rak->rak = 'B-13';
+        $rak->lemari_id = $lemari->id;
+        $rak->save();
+        $rak = new Rak;
+        $rak->rak = 'B-14';
+        $rak->lemari_id = $lemari->id;
+        $rak->save();
+        $rak = new Rak;
+        $rak->rak = 'B-15';
+        $rak->lemari_id = $lemari->id;
+        $rak->save();
+
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-2';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-3';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-4';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-5';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-6';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-7';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
+        $lemari = new Lemari;
+        $lemari->lemari = 'B-8';
+        $lemari->rel_id = $rel->id;
+        $lemari->save();
 
         $rel = new Rel;
         $rel->rel = 'C';

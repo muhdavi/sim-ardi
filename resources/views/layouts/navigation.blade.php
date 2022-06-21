@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+{{--                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />--}}
+                        <img src="{{ asset('img/logo-simardi.png') }}">
                     </a>
                 </div>
 
@@ -16,13 +17,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->is_admin == 1)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('rels.index')" :active="request()->routeIs('rels.index')">
+                    <x-nav-link :href="route('rels.index')" :active="request()->routeIs('rels.*')">
                         {{ __('Rel') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('lemaris.index')" :active="request()->routeIs('lemaris.index')">
+                    <x-nav-link :href="route('lemaris.index')" :active="request()->routeIs('lemaris.*')">
                         {{ __('Lemari') }}
                     </x-nav-link>
                 </div>
@@ -56,6 +58,7 @@
                         {{ __('User') }}
                     </x-nav-link>
                 </div>
+                @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('ardis.index')" :active="request()->routeIs('ardis.index')">
                         {{ __('ARDI') }}
