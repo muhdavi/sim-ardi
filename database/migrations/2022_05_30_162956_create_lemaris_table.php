@@ -15,7 +15,7 @@ class CreateLemarisTable extends Migration
     {
         Schema::create('lemaris', function (Blueprint $table) {
             $table->id();
-            $table->char('lemari', 3);
+            $table->char('lemari', 3)->unique();
             $table->string('keterangan', 100)->nullable();
             $table->foreignId('rel_id')
                 ->constrained('rels')

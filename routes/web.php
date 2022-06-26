@@ -28,36 +28,27 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/get_rels', [RelController::class, 'get_rels'])->name('get_rels');
+    Route::get('/get_lemaris', [LemariController::class, 'get_lemaris'])->name('get_lemaris');
+    Route::get('/get_perangkat_daerahs', [PerangkatDaerahController::class, 'get_perangkat_daerahs'])->name('get_perangkat_daerahs');
+
     Route::resource('rels', RelController::class);
     Route::resource('raks', RakController::class);
+    Route::resource('users', UserController::class);
     Route::resource('lemaris', LemariController::class);
-
-    Route::name('lokasis.')->group(function () {
-        Route::get('lokasis', [LokasiController::class, 'index'])->name('index');
-    });
-
-    Route::name('dokumens.')->group(function () {
-        Route::get('dokumens', [DokumenController::class, 'index'])->name('index');
-    });
-
-    Route::name('perangkat_daerahs.')->group(function () {
-        Route::get('perangkat_daerahs', [PerangkatDaerahController::class, 'index'])->name('index');
-    });
-
-    Route::name('pegawais.')->group(function () {
-        Route::get('pegawais', [PegawaiController::class, 'index'])->name('index');
-    });
+    Route::resource('lokasis', LokasiController::class);
+    Route::resource('dokumens', DokumenController::class);
+    Route::resource('pegawais', PegawaiController::class);
+    Route::resource('perangkat_daerahs', PerangkatDaerahController::class);
 
     Route::name('ardis.')->group(function () {
         Route::get('ardis', [ArdiController::class, 'index'])->name('index');
-    });
-
-    Route::name('users.')->group(function () {
-        Route::get('users', [UserController::class, 'index'])->name('index');
     });
 });

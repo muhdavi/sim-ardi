@@ -10,23 +10,24 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <form method="POST" action="{{ route('rels.store') }}">
+                    <form method="POST" action="{{ route('rels.update', $rel) }}">
                         @csrf
+                        @method('PUT')
 
                         <!-- Rel -->
                         <div>
                             <x-label for="rel" :value="__('Rel')" />
-                            <x-input id="rel" class="block mt-1 w-full" type="text" name="rel" :value="old('rel')" required autofocus />
+                            <x-input id="rel" class="block mt-1 w-full" type="text" name="rel" value="{{old('rel', $rel->rel)}}" required autofocus />
                         </div>
 
                         <!-- Keterangan -->
                         <div class="mt-4">
                             <x-label for="keterangan" :value="__('Keterangan')" />
-                            <x-input id="keterangan" class="block mt-1 w-full" type="text" name="keterangan" :value="old('keterangan')" required />
+                            <x-input id="keterangan" class="block mt-1 w-full" type="text" name="keterangan" value="{{old('rel', $rel->keterangan)}}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('rels.index') }}">
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ URL::previous() }}">
                                 {{ __('BATAL') }}
                             </a>
 

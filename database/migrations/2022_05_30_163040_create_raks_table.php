@@ -15,7 +15,7 @@ class CreateRaksTable extends Migration
     {
         Schema::create('raks', function (Blueprint $table) {
             $table->id();
-            $table->char('rak', 4);
+            $table->char('rak', 4)->unique();
             $table->string('keterangan', 100)->nullable();
             $table->foreignId('lemari_id')
                 ->constrained('lemaris')

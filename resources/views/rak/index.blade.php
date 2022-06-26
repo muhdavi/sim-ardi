@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="#" class="btn btn-sm btn-primary float-right mb-2">Tambah Data</a>
+                    <a href="{{ route('raks.create') }}" class="btn btn-sm btn-primary float-right mb-2">Tambah Data</a>
                     <table class="table table-striped table-bordered tbl_list">
                         <thead>
                             <tr>

@@ -9,6 +9,7 @@ class Rak extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = ['id', 'rak', 'lemari_id', 'keterangan'];
 
     public function lemari()
     {

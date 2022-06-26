@@ -15,7 +15,7 @@ class CreateDokumensTable extends Migration
     {
         Schema::create('dokumens', function (Blueprint $table) {
             $table->id();
-            $table->string('kode', 15);
+            $table->string('kode', 15)->unique();
             $table->string('nama', 200);
         });
     }

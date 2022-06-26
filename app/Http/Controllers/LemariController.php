@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Lemari;
 use App\Models\Rel;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class LemariController extends Controller
@@ -22,7 +25,7 @@ class LemariController extends Controller
                     return $lemari->rel->rel;
                 })
                 ->addColumn('action', function ($lemaris) {
-                    return '<a href="#edit-'.$lemaris->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                    return '<a href="' . route("lemaris.edit", $lemaris->id) . '"><i class="fa fa-pencil"></i></a>';
                 })
                 ->make();
         }
@@ -32,23 +35,28 @@ class LemariController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $rels = Rel::all();
+        return view('lemari.create')->with('rels', $rels);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Lemari::create($request->all());
+            Alert::success('Success', 'Data Berhasil Disimpan!');
+            return $this->index();
+        } catch (QueryException $ex) {
+            Alert::error('Error', 'Data Gagal Disimpan!');
+            return $this->create();
+        }
     }
 
     /**
@@ -66,11 +74,10 @@ class LemariController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Lemari  $lemari
-     * @return \Illuminate\Http\Response
      */
     public function edit(Lemari $lemari)
     {
-        //
+        return view('lemari.edit')->with('lemari', $lemari);
     }
 
     /**
@@ -78,11 +85,17 @@ class LemariController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Lemari  $lemari
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Lemari $lemari)
     {
-        //
+        try {
+            $lemari->update($request->all());
+            Alert::success('Success', 'Data Berhasil Diupdate!');
+            return Redirect::to('lemaris');
+        } catch(QueryException $ex){
+            Alert::error('Error', 'Data Gagal Diupdate!');
+            return view('lemari.edit', ['lemari' => $lemari]);
+        }
     }
 
     /**
@@ -94,5 +107,21 @@ class LemariController extends Controller
     public function destroy(Lemari $lemari)
     {
         //
+    }
+
+    public function get_lemaris(Request $request)
+    {
+        $lemaris = [];
+        $rel_id = $request->rel_id;
+        if ($request->has('q')) {
+            $search = $request->q;
+            $lemaris = Lemari::select("id", "lemari")
+                ->where('rel_id', $rel_id)
+                ->Where('lemari', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $lemaris = Lemari::where('rel_id', $rel_id)->limit(10)->get();
+        }
+        return response()->json($lemaris);
     }
 }

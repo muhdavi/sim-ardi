@@ -15,7 +15,7 @@ class CreateRelsTable extends Migration
     {
         Schema::create('rels', function (Blueprint $table) {
             $table->id();
-            $table->char('rel', 1);
+            $table->char('rel', 1)->unique();
             $table->string('keterangan', 100)->nullable();
         });
     }

@@ -23,11 +23,11 @@
                         <!-- Keterangan -->
                         <div class="mt-4">
                             <x-label for="keterangan" :value="__('Keterangan')" />
-                            <x-input id="keterangan" class="block mt-1 w-full" type="text" name="keterangan" value="{{old('rel', $rel->keterangan)}}" required />
+                            <x-input id="keterangan" class="block mt-1 w-full" type="text" name="keterangan" value="{{old('keterangan', $rel->keterangan)}}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ URL::previous() }}">
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('rels.index') }}">
                                 {{ __('BATAL') }}
                             </a>
 

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PerangkatDaerah extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id', 'perangkat_daerah'];
 
     public function pegawais()
     {

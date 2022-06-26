@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rak;
-use App\Models\Rel;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class RakController extends Controller
@@ -23,8 +25,8 @@ class RakController extends Controller
                 ->addColumn('lemari', function (Rak $rak) {
                     return $rak->lemari->lemari;
                 })
-                ->addColumn('action', function ($lemaris) {
-                    return '<a href="#edit-'.$lemaris->id.'" class="btn btn-sm btn-primary"> Edit</a>';
+                ->addColumn('action', function ($raks) {
+                    return '<a href="' . route("raks.edit", $raks->id) . '"><i class="fa fa-pencil"></i></a>';
                 })
                 ->make();
         }
@@ -34,12 +36,10 @@ class RakController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('rak.create');
     }
 
     /**
@@ -50,7 +50,14 @@ class RakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Rak::create($request->all());
+            Alert::success('Success', 'Data Berhasil Disimpan!');
+            return $this->index();
+        } catch(QueryException $ex){
+            Alert::error('Error', 'Data Gagal Disimpan!');
+            return $this->create();
+        }
     }
 
     /**
@@ -68,11 +75,10 @@ class RakController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Rak  $rak
-     * @return \Illuminate\Http\Response
      */
     public function edit(Rak $rak)
     {
-        //
+        return view('rak.edit')->with('rak', $rak);
     }
 
     /**
@@ -80,11 +86,17 @@ class RakController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Rak  $rak
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Rak $rak)
     {
-        //
+        try {
+            $rak->update($request->all());
+            Alert::success('Success', 'Data Berhasil Diupdate!');
+            return Redirect::to('raks');
+        } catch(QueryException $ex){
+            Alert::error('Error', 'Data Gagal Diupdate!');
+            return view('rak.edit', ['rak' => $rak]);
+        }
     }
 
     /**

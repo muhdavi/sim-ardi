@@ -3,6 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
+
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
@@ -17,6 +18,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
                 @if(Auth::user()->is_admin == 1)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('rels.index')" :active="request()->routeIs('rels.*')">
@@ -29,38 +31,38 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('raks.index')" :active="request()->routeIs('raks.index')">
+                    <x-nav-link :href="route('raks.index')" :active="request()->routeIs('raks.*')">
                         {{ __('Rak') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('lokasis.index')" :active="request()->routeIs('lokasis.index')">
+                    <x-nav-link :href="route('lokasis.index')" :active="request()->routeIs('lokasis.*')">
                         {{ __('Lokasi') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dokumens.index')" :active="request()->routeIs('dokumens.index')">
+                    <x-nav-link :href="route('dokumens.index')" :active="request()->routeIs('dokumens.*')">
                         {{ __('Dokumen') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('perangkat_daerahs.index')" :active="request()->routeIs('perangkat_daerahs.index')">
+                    <x-nav-link :href="route('perangkat_daerahs.index')" :active="request()->routeIs('perangkat_daerahs.*')">
                         {{ __('Perangkat Daerah') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('pegawais.index')" :active="request()->routeIs('pegawais.index')">
+                    <x-nav-link :href="route('pegawais.index')" :active="request()->routeIs('pegawais.*')">
                         {{ __('Pegawai') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('User') }}
                     </x-nav-link>
                 </div>
                 @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ardis.index')" :active="request()->routeIs('ardis.index')">
+                    <x-nav-link :href="route('ardis.index')" :active="request()->routeIs('ardis.*')">
                         {{ __('ARDI') }}
                     </x-nav-link>
                 </div>

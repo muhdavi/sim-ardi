@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Dokumen extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id', 'kode', 'nama'];
 }
