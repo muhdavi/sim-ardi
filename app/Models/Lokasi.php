@@ -13,4 +13,9 @@ class Lokasi extends Model
     {
         return $this->belongsTo(Rak::class);
     }
+
+    public function pegawai()
+    {
+        return$this->belongsTo(Pegawai::class);
+    }
 }

@@ -36,7 +36,9 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::get('/get_rels', [RelController::class, 'get_rels'])->name('get_rels');
+    Route::get('/get_raks', [RakController::class, 'get_raks'])->name('get_raks');
     Route::get('/get_lemaris', [LemariController::class, 'get_lemaris'])->name('get_lemaris');
+    Route::get('/get_pegawais', [PegawaiController::class, 'get_pegawais'])->name('get_pegawais');
     Route::get('/get_perangkat_daerahs', [PerangkatDaerahController::class, 'get_perangkat_daerahs'])->name('get_perangkat_daerahs');
 
     Route::resource('rels', RelController::class);

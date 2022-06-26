@@ -107,4 +107,17 @@ class PegawaiController extends Controller
     {
         //
     }
+
+    public function get_pegawais(Request $request)
+    {
+        $data = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $data = Pegawai::select('id', 'nip', 'nama')
+                ->where('nip','LIKE',"%$search%")
+                ->orWhere('nama','LIKE',"%$search%")
+                ->get();
+        }
+        return response()->json($data);
+    }
 }

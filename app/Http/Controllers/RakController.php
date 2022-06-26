@@ -109,4 +109,20 @@ class RakController extends Controller
     {
         //
     }
+
+    public function get_raks(Request $request)
+    {
+        $raks = [];
+        $lemari_id = $request->lemari_id;
+        if ($request->has('q')) {
+            $search = $request->q;
+            $raks = Rak::select("id", "rak")
+                ->where('lamri_id', $lemari_id)
+                ->Where('rak', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $raks = Rak::where('lemari_id', $lemari_id)->limit(10)->get();
+        }
+        return response()->json($raks);
+    }
 }

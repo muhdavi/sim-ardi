@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <form method="POST" action="{{ route('raks.store') }}">
+                    <form method="POST" action="{{ route('lokasis.store') }}">
                         @csrf
 
                         <!-- Rel -->
@@ -78,8 +78,8 @@
                 });
 
                 $('#select_rel').change( function() {
-
                     $('#select_lemari').empty();
+                    $('#select_rak').empty();
 
                     let rel_id = $(this).val();
                     if (rel_id) {
@@ -103,7 +103,43 @@
                             }
                         })
                     } else {
-                        $('#select_lemari').empty();
+                        $('#select_lemari').select2({
+                            placeholder: 'Pilih salah satu lemari...',
+                        });
+                        $('#select_rak').select2({
+                            placeholder: 'Pilih salah satu rak...',
+                        });
+                    }
+                });
+
+                //  Event on change select rak
+                $('#select_lemari').change(function() {
+                    $('#select_rak').empty();
+                    let lemari_id = $(this).val();
+                    if (lemari_id) {
+                        $('#select_rak').select2({
+                            allowClear: true,
+                            placeholder: 'Pilih salah satu rak...',
+                            ajax: {
+                                url: "{{ route('get_raks') }}?lemari_id=" + lemari_id,
+                                dataType: 'json',
+                                delay: 250,
+                                processResults: function(data) {
+                                    return {
+                                        results: $.map(data, function(item) {
+                                            return {
+                                                text: item.rak,
+                                                id: item.id
+                                            }
+                                        })
+                                    };
+                                }
+                            }
+                        });
+                    } else {
+                        $('#select_rak').select2({
+                            placeholder: 'Pilih salah satu rak...',
+                        });
                     }
                 });
             });
