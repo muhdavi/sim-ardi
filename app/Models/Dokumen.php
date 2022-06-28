@@ -10,4 +10,9 @@ class Dokumen extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = ['id', 'kode', 'nama'];
+
+    public function pegawai()
+    {
+        return $this->belongsToMany(Pegawai::class);
+    }
 }

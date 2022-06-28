@@ -113,7 +113,10 @@ class PerangkatDaerahController extends Controller
             $search = $request->q;
             $data = PerangkatDaerah::select('id', 'perangkat_daerah')
                 ->where('perangkat_daerah','LIKE',"%$search%")
+                ->orderBy('perangkat_daerah')
                 ->get();
+        } else {
+            $data = PerangkatDaerah::limit(5)->orderBy('perangkat_daerah')->get();
         }
         return response()->json($data);
     }

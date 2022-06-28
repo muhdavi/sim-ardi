@@ -113,6 +113,8 @@ class RelController extends Controller
                 ->where('rel','LIKE',"%$search%")
                 ->orWhere('keterangan','LIKE',"%$search%")
                 ->get();
+        } else {
+            $data = Rel::limit(5)->get();
         }
         return response()->json($data);
     }

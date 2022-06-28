@@ -85,7 +85,7 @@
             },
 
             title: {
-                text: 'Pie point CSS'
+                text: 'Jumlah Pegawai Berdasarkan Rel'
             },
 
             xAxis: {
@@ -97,14 +97,14 @@
                 allowPointSelect: true,
                 keys: ['name', 'y', 'selected', 'sliced'],
                 data: [
-                    ['Apples', 29.9, false],
-                    ['Pears', 71.5, false],
-                    ['Oranges', 106.4, false],
-                    ['Plums', 129.2, false],
-                    ['Bananas', 144.0, false],
-                    ['Peaches', 176.0, false],
-                    ['Prunes', 135.6, true, true],
-                    ['Avocados', 148.5, false]
+                    ['A', 29.9, false],
+                    ['B', 71.5, false],
+                    ['C', 106.4, false],
+                    ['D', 129.2, false],
+                    ['E', 144.0, false],
+                    ['F', 176.0, false],
+                    ['G', 135.6, true, true],
+                    ['H', 148.5, false]
                 ],
                 showInLegend: true
             }]

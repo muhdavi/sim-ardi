@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDokumenPegawaisTable extends Migration
+class CreateDokumenPegawaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDokumenPegawaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumen_pegawais', function (Blueprint $table) {
+        Schema::create('dokumen_pegawai', function (Blueprint $table) {
             $table->foreignId('dokumen_id')
                 ->constrained('dokumens')
                 ->onUpdate('cascade');
@@ -24,6 +24,8 @@ class CreateDokumenPegawaisTable extends Migration
                 ->constrained('users')
                 ->onUpdate('cascade');
             $table->string('file', 100);
+            $table->string('nomor', 100)->nullable();
+            $table->dateTime('tanggal')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->primary(['dokumen_id', 'pegawai_id']);
@@ -37,6 +39,6 @@ class CreateDokumenPegawaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumen_pegawais');
+        Schema::dropIfExists('dokumen_pegawai');
     }
 }

@@ -121,7 +121,7 @@ class RakController extends Controller
                 ->Where('rak', 'LIKE', "%$search%")
                 ->get();
         } else {
-            $raks = Rak::where('lemari_id', $lemari_id)->limit(10)->get();
+            $raks = Rak::where('lemari_id', $lemari_id)->limit(5)->get();
         }
         return response()->json($raks);
     }

@@ -102,4 +102,20 @@ class DokumenController extends Controller
     {
         //
     }
+
+    public function get_dokumens(Request $request)
+    {
+        $dokumens = [];
+        if ($request->has('q')) {
+            $search = $request->q;
+            $dokumens = Dokumen::select("id", "nama", "kode")
+                ->where('nama', 'LIKE', "%$search%")
+                ->orWhere('kode', 'LIKE', "%$search%")
+                ->orderBy('nama')
+                ->get();
+        } else {
+            $dokumens = Dokumen::limit(5)->orderBy('nama')->get();
+        }
+        return response()->json($dokumens);
+    }
 }

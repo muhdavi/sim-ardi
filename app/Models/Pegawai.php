@@ -14,4 +14,14 @@ class Pegawai extends Model
     {
         return $this->belongsTo(PerangkatDaerah::class);
     }
+
+    public function lokasi()
+    {
+        return $this->hasOne(Lokasi::class);
+    }
+
+    public function dokumen()
+    {
+        return $this->belongsToMany(Dokumen::class)->withPivot(['file', 'nomor', 'tanggal']);
+    }
 }
