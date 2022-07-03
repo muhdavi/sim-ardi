@@ -31,10 +31,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    Route::get('/dashboard', [RelController::class, 'dashboard'])->name('dashboard');
     Route::get('/get_rels', [RelController::class, 'get_rels'])->name('get_rels');
     Route::get('/get_raks', [RakController::class, 'get_raks'])->name('get_raks');
     Route::get('/get_lemaris', [LemariController::class, 'get_lemaris'])->name('get_lemaris');

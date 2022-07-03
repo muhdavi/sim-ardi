@@ -52,7 +52,7 @@ class PegawaiController extends Controller
             Alert::success('Success', 'Data Berhasil Disimpan!');
             return $this->index();
         } catch(QueryException $ex){
-            Alert::error('Error', 'Data Gagal Disimpan! <br/> Karena: '. $ex);
+            Alert::error('Error', 'Data Gagal Disimpan!!! Karena: '. $ex->getMessage());
             return $this->create();
         }
     }

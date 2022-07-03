@@ -78,35 +78,56 @@
         </div>
     </div>
     <script type="text/javascript">
+        var pdpk_lk = <?php echo $pdpk_lk ?>;
+        var pdpk_pr = <?php echo $pdpk_pr ?>;
+        var jumlah_pegawai = <?php echo $jumlah_pegawai ?>;
+        var tahun = 2022;
+
         Highcharts.chart('container', {
-
             chart: {
-                styledMode: true
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
             },
-
             title: {
-                text: 'Jumlah Pegawai Berdasarkan Rel'
+                text: `Pegawai Kabupaten Aceh Timur Tahun ${tahun}`
             },
-
-            xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            subtitle: {
+                text: `Berdasarkan Arsip Digital (${jumlah_pegawai} Pegawai)`
             },
-
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
             series: [{
-                type: 'pie',
-                allowPointSelect: true,
-                keys: ['name', 'y', 'selected', 'sliced'],
-                data: [
-                    ['A', 29.9, false],
-                    ['B', 71.5, false],
-                    ['C', 106.4, false],
-                    ['D', 129.2, false],
-                    ['E', 144.0, false],
-                    ['F', 176.0, false],
-                    ['G', 135.6, true, true],
-                    ['H', 148.5, false]
-                ],
-                showInLegend: true
+                name: 'Sebanyak',
+                colorByPoint: true,
+                data: [{
+                    name: 'Telah Memiliki Arsip',
+                    y: pdpk_lk,
+                    color: "#0090d0",
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Belum Memiliki Arsip',
+                    y: pdpk_pr,
+                    color: "#d7127a"
+                }]
             }]
         });
     </script>

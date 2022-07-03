@@ -112,8 +112,8 @@ class LokasiController extends Controller
             Alert::success('Success', 'Data Berhasil Diupdate!');
             return Redirect::to('lokasis');
         } catch(QueryException $ex){
-            Alert::error('Error', 'Data Gagal Diupdate!');
-            return view('lokasis.edit', ['lokasi' => $lokasi]);
+            Alert::error('Error', 'Data Gagal Disimpan!!! Karena: '. $ex->getMessage());
+            return view('lokasi.edit', ['lokasi' => $lokasi]);
         }
     }
 

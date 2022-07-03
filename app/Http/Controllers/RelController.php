@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lokasi;
+use App\Models\Pegawai;
 use App\Models\Rel;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -117,5 +120,21 @@ class RelController extends Controller
             $data = Rel::limit(5)->get();
         }
         return response()->json($data);
+    }
+
+    public function dashboard()
+    {
+        $jumlah_pegawai = Pegawai::all();
+        $pegawa_arsip = Lokasi::select(DB::raw("pegawai_id as pegawai"))
+            ->whereNotNull('pegawai_id')
+            ->pluck('pegawai');
+
+        $pdpk_lk = $pegawa_arsip->count();
+        $pdpk_pr = ($jumlah_pegawai->count() - $pegawa_arsip->count());
+        return view('dashboard', [
+            'pdpk_lk' => $pdpk_lk,
+            'pdpk_pr' => $pdpk_pr,
+            'jumlah_pegawai' => $jumlah_pegawai->count()
+        ]);
     }
 }

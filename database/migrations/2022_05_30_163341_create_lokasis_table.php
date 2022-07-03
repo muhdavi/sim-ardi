@@ -19,6 +19,7 @@ class CreateLokasisTable extends Migration
                 ->constrained('raks')
                 ->onUpdate('cascade');
             $table->foreignId('pegawai_id')
+                ->unique()
                 ->nullable()
                 ->constrained('pegawais')
                 ->onUpdate('cascade');
