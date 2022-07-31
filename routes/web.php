@@ -37,8 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get_lemaris', [LemariController::class, 'get_lemaris'])->name('get_lemaris');
     Route::get('/get_pegawais', [PegawaiController::class, 'get_pegawais'])->name('get_pegawais');
     Route::get('/get_dokumens', [DokumenController::class, 'get_dokumens'])->name('get_dokumens');
-    Route::get('/get_perangkat_daerahs', [PerangkatDaerahController::class, 'get_perangkat_daerahs'])->name('get_perangkat_daerahs');
     Route::get('/get_files/{file_name}/{pegawai_nip}', [ArdiController::class, 'get_files'])->name('get_files');
+    Route::get('/get_perangkat_daerahs', [PerangkatDaerahController::class, 'get_perangkat_daerahs'])->name('get_perangkat_daerahs');
 
     Route::resource('rels', RelController::class);
     Route::resource('raks', RakController::class);
