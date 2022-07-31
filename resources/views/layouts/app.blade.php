@@ -51,7 +51,7 @@
             </header>
 
             <!-- Page Content -->
-            <main>u
+            <main>
                 {{ $slot }}
             </main>
         </div>

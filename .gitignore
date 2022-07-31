@@ -17,3 +17,4 @@ yarn-error.log
 /log
 *.pdf
 .DS_Store
+/database/seeders/PegawaiSeeder.php

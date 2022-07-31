@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             DokumenSeeder::class,
             PerangkatDaerahSeeder::class,
+            PegawaiSeeder::class,
         ]);
     }
 }

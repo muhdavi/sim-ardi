@@ -54,10 +54,18 @@
                                 <td class="text-center">{{ $dokumen->pivot->nomor ? $dokumen->pivot->nomor : '-' }}</td>
                                 <td class="text-center">{{ $dokumen->pivot->tanggal ? $dokumen->pivot->tanggal : '-'}}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('get_files', [$dokumen->pivot->file, $pegawai->nip]) }}" title="Download File"><i class="fa fa-clipboard"></i><span class="badge badge-pill badge-dark ml-2">Download</span></a>
+                                    @if(Auth::user()->is_admin == true)
+                                        <a href="{{ route('get_files', [$dokumen->pivot->file, $pegawai->nip]) }}" title="Download File"><i class="fa fa-clipboard"></i><span class="badge badge-pill badge-dark ml-2">Download</span></a>
+                                    @else
+                                        <span class="badge badge-pill badge-success ml-2">Tersedia</span>
+                                    @endif
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route("ardis.detach", [$dokumen->id, $pegawai->id]) }}"><i class="fa fa-trash text-danger"></i></a>
+                                    @if(Auth::user()->is_admin == true)
+                                        <a href="{{ route("ardis.detach", [$dokumen->id, $pegawai->id]) }}"><i class="fa fa-trash text-danger"></i></a>
+                                    @else
+                                        <span>-</span>
+                                    @endif
                                 </td>
                             </tr>
                             @empty
