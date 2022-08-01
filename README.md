@@ -1,5 +1,8 @@
-![alt text](https://github.com/muhdavi/sim-ardi/blob/main/sertifikat.jpeg?raw=true)
-<p align="center"><a href="https://edata.acehtimurkab.go.id" target="_blank">![alt text](https://github.com/muhdavi/sim-ardi/blob/main/public/img/logo-simardi.png?raw=true)</a> </p>
+<p align="center">
+<a href="https://edata.acehtimurkab.go.id" target="_blank">
+<img src="https://edata.acehtimurkab.go.id/img/logo-simardi.png" alt="Logo SIM-ARDI"/>
+</a>
+</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -19,6 +22,10 @@ SIM-ARDI adalah sebuah sistem informasi untuk arsip digital yang dibangun menggu
 - Fitur pengelolaan Pegawai
 - Fitur pengelolaan Pengguna
 - Fitur pengelolaan Arsip Digital
+
+Berkat rahmat dan ridha Allah SWT, Alhamdulillah SIM-ARDI mendapat penghargaan sebagai Juara Pertama.
+
+![Piagam Penghargaan](https://github.com/muhdavi/sim-ardi/blob/main/sertifikat.jpeg?raw=true)
 
 ## License
 
