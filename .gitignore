@@ -18,3 +18,5 @@ yarn-error.log
 *.pdf
 .DS_Store
 /database/seeders/PegawaiSeeder.php
+/database/seeders/UserSeeder.php
+composer.lock
